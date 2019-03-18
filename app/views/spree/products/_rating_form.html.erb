@@ -1,0 +1,7 @@
+<%= form_tag review_product_creation_path, method:'post' do %>
+  <%= text_area_tag :body %>
+  <%= hidden_field_tag :spree_product_id, product.id %>
+  <%= hidden_field_tag :spree_user_id, 1 %>
+  <%= text_field_tag :rating %>
+  <%= submit_tag :send, value:'Enviar' %>
+<% end %>
