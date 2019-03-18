@@ -2,6 +2,22 @@
   <%= text_area_tag :body %>
   <%= hidden_field_tag :spree_product_id, product.id %>
   <%= hidden_field_tag :spree_user_id, 1 %>
-  <%= text_field_tag :rating %>
+  <% if product.i_had_already_voting(1) %>
+  <%= hidden_field_tag :rating, product.my_rating %>
+  <% else %>
+  <%= hidden_field_tag :rating %>
+  <% end %>
+  <div class='starrr' id='rating_star'></div>
   <%= submit_tag :send, value:'Enviar' %>
 <% end %>
+<script type="text/javascript">
+  $('#rating_star').starrr({
+    <% if product.i_had_already_voting(1) %>
+    readOnly: true,
+    rating: <%= product.my_rating %>,
+    <% end %>
+    change: function(e, value){
+      $("input#rating").val(value);
+    }
+  });
+</script>
