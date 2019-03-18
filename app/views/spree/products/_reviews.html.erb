@@ -1,0 +1,6 @@
+<% product.spree_reviews.each do |review| %>
+<div class="col-md-12">
+  <h2>Escrito por: <%= review.get_author_name %></h2>
+  <span><%= review.body %></span>
+</div>
+<% end %>

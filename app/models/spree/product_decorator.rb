@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  has_many :spree_reviews, class_name: 'Spree::Review'
+  has_many :spree_reviews, foreign_key: 'spree_product_id',class_name: 'Spree::Review'
   attr_accessor :my_rating
 
   def i_had_already_voting spree_user_id
